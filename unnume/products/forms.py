@@ -1,10 +1,4 @@
-from django import forms
-from products.models import ProductType
+from django.forms.models import inlineformset_factory
+from products.models import Product,ProductDetail,ProductTypeFeatures
 
-class ProductForm(forms.Form):
-    name = forms.CharField()
-    image = forms.FileField()
-    description = forms.CharField()  
-    producttype = forms.ChoiceField(choices=[])
-    def __init__(self):
-        self.producttype.choices = [(x.name) for x in ProductType.objects.all()]
+Formset = inlineformset_factory(Product,ProductDetail,fields=('productTypeFeatures','Value',),can_delete=False,extra = 0)

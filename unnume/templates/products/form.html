@@ -3,5 +3,6 @@
 {% block title %} Add {% endblock title %}
 
 {% block content %}
-    {{form}}
+    <table>{{form.as_table}}</table>
+    <table>{{types.as_table}}</table>
 {% endblock content %}
