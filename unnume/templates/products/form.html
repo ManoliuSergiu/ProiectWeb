@@ -1,8 +1,23 @@
 {% extends "base/base.html" %}
 
+{% load static %}
+
 {% block title %} Add {% endblock title %}
 
 {% block content %}
-    <table>{{form.as_table}}</table>
-    <table>{{types.as_table}}</table>
+    <form>
+        {% for field in form %}
+            <div>
+                <div class="font-weight-bold">{{field.label_tag}} </div>
+                <div class="ml-4" >{{field}}</div>
+            </div>
+            <br>   
+        {% endfor %}   
+        <div id="results-wrapper"></div>
+    </form>
 {% endblock content %}
+
+{% block scripts %}
+    {{block.super}}
+    <script src="{% static "js/addItem.js" %}"></script>
+{% endblock scripts %}

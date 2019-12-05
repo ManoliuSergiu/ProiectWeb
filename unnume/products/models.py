@@ -16,7 +16,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     producttype = models.ForeignKey(ProductType, on_delete=models.CASCADE)
     price = models.IntegerField()
-    image = models.FileField(upload_to='uploads/',default='uploads/default.jpg')
+    image = models.FileField(upload_to='images/',default='uploads/default.jpg')
     description = models.TextField(max_length=1000, default='Item description')
     class Meta:
         verbose_name = "product"
