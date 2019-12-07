@@ -1,7 +1,7 @@
 from django.urls import path
 from products.views.product import ItemView
 from products.views.search import SearchView
-from products.views.add import ProductCreateView, homeDynamicContent
+from products.views.add import ProductCreateView, detailFormView,save
 
 
 urlpatterns = [
@@ -9,5 +9,6 @@ urlpatterns = [
     path('search', SearchView.as_view(), name = 'Search'),
     path('add', ProductCreateView.as_view(), name='Add' ), 
     # path('edit/<int:pk>',ProductUpdateView.as_view() , name='Edit'), 
-    path('test/<int:pk>',homeDynamicContent,name="Test"),
+    path('detailform',detailFormView,name='Detail Form'),
+    path('save',save,name='Save')
 ]

@@ -1,0 +1,22 @@
+{% load static %}
+<form id="details-form" method="post">
+    
+    <table >
+        <tr class="font-weight-normal border-bottom ">
+            <th scope="col" class="border-right"> Feature </th>
+            <th scope="col"> Value </th>
+        </tr> 
+        
+        {% for field in details %}
+            <tr >
+                <td class="column font-weight-bold border-right">
+                    {{field.instance.name}} 
+                </td>
+                <td class="column ml-5">
+                    {{field.Value}}
+                </td>
+            </tr>
+        {% endfor %}    
+        {% csrf_token %}
+    </form>
+</table>
