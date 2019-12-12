@@ -11,7 +11,6 @@ from django.forms import inlineformset_factory
 class ProductCreateView(CreateView):
     form_class = ProductForm
     template_name='products/form.html'
-
     def get(self, request):
         form = self.form_class()
         return render(request,self.template_name,{'form':form})
@@ -22,12 +21,24 @@ class ProductCreateView(CreateView):
             prod = f.save()
             atype = ProductType.objects.get(name = f.cleaned_data['producttype'])
             fset = DetailsFormSet(request.POST,instance = atype)
-            print(fset)
-            print(atype)
-            if(fset.is_valid()):
-                print("ajunge aici")
-                fset.save()
-                return HttpResponseRedirect(reverse_lazy('Search'))
+            for form in fset:
+                form.is_valid()
+                prodfeat = ProductTypeFeatures.objects.get(name=form.cleaned_data['name'])
+                detail = DetailForm({
+                    'product': prod.pk,
+                    'feature': prodfeat.pk,
+                    'producttype': atype.pk,
+                    'Value': form.cleaned_data['Value']
+                })
+                print(detail.is_bound)
+                print(detail.errors)
+                if (detail.is_valid()):
+                    print(detail.cleaned_data)
+                    detail.save()
+                # else:
+                #     print(detail)
+                # return HttpResponseRedirect(reverse_lazy('Search'))
+
         return render(request, self.template_name, { 'form': self.form_class})
 
     

@@ -33,8 +33,7 @@ class ProductTypeFeatures(models.Model):
     class Meta:
         verbose_name = "feature"
         verbose_name_plural = "features"
-    def __str__(self):
-        return self.name
+
     
 
 class ProductDetail(models.Model):

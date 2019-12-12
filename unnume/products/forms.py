@@ -23,4 +23,4 @@ class BaseFeatureFormSet(BaseInlineFormSet):
         super().add_fields(form, index)
         form.fields['Value'] = forms.CharField()
         
-DetailsFormSet = inlineformset_factory(ProductType,ProductTypeFeatures,fields=('name',),formset=BaseFeatureFormSet,extra=0,widgets={})
+DetailsFormSet = inlineformset_factory(ProductType,ProductTypeFeatures,fields=('id','name',),formset=BaseFeatureFormSet,extra=0,widgets={})
