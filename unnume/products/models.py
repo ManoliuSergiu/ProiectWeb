@@ -26,8 +26,6 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-
-
 class ProductTypeFeatures(models.Model):
     name = models.CharField(max_length=20)
     producttype = models.ForeignKey(ProductType, on_delete=models.CASCADE)
@@ -50,5 +48,6 @@ class ProductDetail(models.Model):
         verbose_name_plural = "details"
     def __str__(self):
         return self.Value
+
 
 

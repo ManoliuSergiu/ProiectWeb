@@ -44,26 +44,8 @@ $(document).ready(function(){
         reader.readAsDataURL(myfile[0]);
         $('#image-screen').fadeIn();
     })
-    $('#details-form').submit(function(event){
-        event.preventDefault();
-    })
-    $('#primary-form').submit(function(event){
-        event.preventDefault();
-    })
     $('#add-button').click(function(event){
-        var prodform =  $('#primary-form').serialize();
-        var detailsform = $('#details-form').serialize();
-        $.ajax({
-            method: 'POST',
-            url:$('#primary-form').attr('action'),
-            data:{
-                prodform: prodform,
-                detailsform: detailsform
-            },
-            success: function(message){
-                $('#message').html(message)
-            }
-            
-        })
+        $('#primary-form').submit();
+        $('#details-form').submit();
     })
 });
