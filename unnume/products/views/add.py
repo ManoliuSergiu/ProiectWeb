@@ -18,11 +18,13 @@ class ProductCreateView(CreateView):
     
     def post(self, request):
         f = self.form_class(request.POST,request.FILES)
-        fset = DetailsFormSet(request.POST)
-        print(fset)
         if(f.is_valid()):
+            prod = f.save()
+            atype = ProductType.objects.get(name = f.cleaned_data['producttype'])
+            fset = DetailsFormSet(request.POST,instance = atype)
+            print(fset)
+            print(atype)
             if(fset.is_valid()):
-                prod = f.save()
                 print("ajunge aici")
                 fset.save()
                 return HttpResponseRedirect(reverse_lazy('Search'))
@@ -31,7 +33,6 @@ class ProductCreateView(CreateView):
     
 
 def detailFormView(request):
-    # aux = inlineformset_factory(ProductType,ProductTypeFeatures,fields=('name',),extra=0,widgets={},formset=BaseFeatureFormSet,can_delete=False)
     aux = DetailsFormSet
     if request.method == "GET":
         atype= ProductType.objects.get(id=int(request.GET['d']))
