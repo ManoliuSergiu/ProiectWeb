@@ -2,10 +2,13 @@
 
 {% block content %}
     <div class="row border-black mx-auto ">
-        <div class="w-25" style="align-content:center;">
-            <img src="{{ object.image }}" alt="{{object.name}} image">
+        <div class="column w-25" style="align-content:center;">
+            <img src="{{ object.image.url }}" alt="{{object.name}} image" style="max-width: 100%;">
         </div>
-        <div class="w-75 text-center" style="background-color: lightblue;"> <h2>{{ object.name }}</h2></div>
+        <div class="column w-75 font-weight-bold text-center text-uppercase" style="background-color: aqua;">
+            <div class="d-flex justify-content-center align-items-center align-middle">
+                {{object.name}}
+            </div>
+        </div>
     </div>
-    {{ object.image }}
 {% endblock content %}

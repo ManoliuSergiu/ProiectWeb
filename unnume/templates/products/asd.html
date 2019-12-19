@@ -2,19 +2,22 @@
 <form id="details-form" method="post">
     
     <table >
-        <tr class="font-weight-normal border-bottom ">
-            <th scope="col" class="border-right mr-4"> Feature </th>
-            <th scope="col" class="ml-4"> Value </th>
+        <tr class="font-weight-normal  ">
+            <th scope="col" class=""> </th>
+            <th scope="col" class=""> </th>
             <th scope="col" class="ml-4">  </th>
         </tr> 
         
         {% for field in details %}
             <tr>
-                <td class="column font-weight-bold border-right">
+                <td class="column mr-5 font-weight-bold ">
                     {{field.instance.name}} 
                 </td>
                 <td class="column ml-5">
                     {{field.Value}}
+                </td>
+                <td class="column invisible" >
+                    {{field.name}} 
                 </td>
             </tr>
         {% endfor %}    

@@ -6,7 +6,9 @@ from products.forms import ProductForm,BaseFeatureFormSet,DetailForm,DetailsForm
 from products.models import ProductDetail,ProductTypeFeatures,ProductType,Product
 from django.urls import reverse_lazy
 from django import forms
+from django.contrib.auth.decorators import permission_required
 from django.forms import inlineformset_factory
+from django.utils.decorators import method_decorator
 
 class ProductCreateView(CreateView):
     form_class = ProductForm
