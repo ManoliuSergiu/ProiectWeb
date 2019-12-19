@@ -1,58 +1,52 @@
-{% extends "base/base.html" %}
-
-{% load static %}
-
-{% block title %} Add {% endblock title %}
-
+{% extends "base/base.html" %} 
+{% load static %} 
+{% block title %} Add {% endblock title %} 
 {% block content %}
-    <div id="message"></div>
-    <div class="row">
-        <div class="col-sm mt-5 border-right">
-            <form id="primary-form" method="POST" action="{% url 'Add' %}" enctype="multipart/form-data">
-                
-                {% for field in form %}
+<div id="message"></div>
+<div class="row">
+        <form id="primary-form" method="POST" action="{% url 'Add' %}" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-sm mt-5 border-right">
+                    {% for field in form %}
                     <div>
                         <div class="font-weight-bold">{{field.label_tag}} </div>
-                        <div class="ml-4" >{{field}}</div>
+                        <div class="ml-4">{{field}}</div>
                     </div>
                     <div>
                         {{field.errors}}
                     </div>
-                    <br>   
-                {% endfor %}  
-                {% csrf_token %} 
-                <div class="row h-50 border-right" ><div class="mx-auto mt-5" id="results-wrapper"></div>
-            </form>
-
-        </div>
-        <div class="col-sm mt-5">
-            <div class="row h-50 border-right ">
-                <img class="thumb-size img-thumbnail mx-auto" id="image-screen" src="" alt="" style="display: none;">
+                    <br> {% endfor %}
+                </div>
+                {% csrf_token %}
+                <div class="col-sm mt-5">
+                    <div class=" mx-auto" id="results-wrapper">
+                    </div>
+                    <img class="thumb-size img-thumbnail mt-5 mx-auto" id="image-screen" src="" alt="" style="display: none;">
+                </div>
             </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm mt-5">
-            <div class="mx-auto">
-                <button type="button" class="btn btn-primary btn-lg btn-block" id="add-button">Add</button>
-            </div>
-        </div>
-        <div class="col-sm mt-5">
-            <div class="mx-auto">
-                <button type="button" class="btn btn-secondary btn-lg btn-block" id="clear-button">Clear</button>
-            </div>
-        </div>
-        <div class="col-sm mt-5">
-            <div class="mx-auto">
-                <button type="button" class="btn btn-danger btn-lg btn-block" id="exit-button">Exit</button>
-            </div>
-        </div>
+        </form>
         
+</div>
+<div class="row">
+    <div class="col-sm mt-5">
+        <div class="mx-auto">
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="add-button">Add</button>
+        </div>
     </div>
-{% endblock content %}
+    <div class="col-sm mt-5">
+        <div class="mx-auto">
+            <button type="button" class="btn btn-secondary btn-lg btn-block" id="clear-button">Clear</button>
+        </div>
+    </div>
+    <div class="col-sm mt-5">
+        <div class="mx-auto">
+            <button type="button" class="btn btn-danger btn-lg btn-block" id="exit-button">Exit</button>
+        </div>
+    </div>
 
-{% block scripts %}
+</div>
+{% endblock content %} 
+{% block scripts %} 
     {{block.super}}
     <script src="{% static "js/addItem.js" %}"></script>
 {% endblock scripts %}
