@@ -1,0 +1,11 @@
+{% extends "base/base.html" %}
+
+{% block title %}Logout{% endblock title %}
+
+{% block content %}
+    <h1 class="mt-5">You have successfully logged out</h1>
+{% endblock %}
+
+{% block navbar %}
+    {% include "base/navbar.html" with active_page="HomePage" %}
+{% endblock navbar %}

@@ -1,0 +1,30 @@
+{% extends "base/base.html" %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="row justify-content-center mt-5">
+        <div class="card bg-dark w-25">
+            <div class="text-light ml-4 font-weight-bold">
+                Username:   
+            </div>
+            <div class="mx-auto"> 
+                {{form.username}}
+            </div>
+            <div class="text-light ml-4 font-weight-bold">
+                Password:   
+            </div>
+            <div class="mx-auto"> 
+                {{form.password}}
+            </div>
+            <button class="btn btn-dark mt-1">Login</button>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+{% block navbar %}
+    {% include "base/navbar.html" with active_page="login" %}
+{% endblock navbar %}

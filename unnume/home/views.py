@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from .models import Contact
+from django.contrib.auth import logout
 
 # Create your views here.
 class HomeView(TemplateView):
@@ -14,3 +15,8 @@ class HomeView(TemplateView):
 class AboutView(TemplateView):
     template_name = 'home/about.html'
     
+
+    
+def profile_view(request):
+    template_name = 'home/profile.html'
+    return render(request,template_name)

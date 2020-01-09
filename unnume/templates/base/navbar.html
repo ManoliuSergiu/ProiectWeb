@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <a class="navbar-brand" href="{% url 'HomePage' %}">!eMAG</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -14,7 +14,25 @@
                 <li class="nav-item {% if active_page == 'AboutPage' %} active {% endif %}">
                     <a class="nav-link" href="{% url 'AboutPage' %}">About</a>
                 </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-uppercase font-weight-bold" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{user.get_username}}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Log Out</a>
+                        </div>
+                    </li>
+                {% else %}
+                <li class="nav-item {% if active_page == 'login' %} active {% endif %}">
+                    <a class="nav-link"  href="{% url 'login' %}">Log In
+                    <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                {% endif %}
             </ul>
+           
         </div>
     </div>
 </nav>

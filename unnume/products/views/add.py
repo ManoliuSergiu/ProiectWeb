@@ -6,11 +6,11 @@ from products.forms import ProductForm,BaseFeatureFormSet,DetailForm,DetailsForm
 from products.models import ProductDetail,ProductTypeFeatures,ProductType,Product
 from django.urls import reverse_lazy
 from django import forms
-from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.forms import inlineformset_factory
-from django.utils.decorators import method_decorator
 
-class ProductCreateView(CreateView):
+class ProductCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'staff'
     form_class = ProductForm
     template_name='products/form.html'
     def get(self, request):
