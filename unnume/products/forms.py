@@ -24,9 +24,10 @@ class BaseFeatureFormSet(BaseInlineFormSet):
         form.fields['Value'] = forms.CharField()
 
 class CartItemForm(Form):
-    name= forms.CharField()
-    price = forms.DecimalField()
-    image = forms.FileField()
-    count = forms.IntegerField()
+    class Meta:
+        name= forms.CharField()
+        price = forms.DecimalField()
+        image = forms.FileField()
+        count = forms.IntegerField()
         
 DetailsFormSet = inlineformset_factory(ProductType,ProductTypeFeatures,fields=('id','name',),formset=BaseFeatureFormSet,extra=0,widgets={})

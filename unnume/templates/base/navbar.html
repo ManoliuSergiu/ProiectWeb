@@ -23,8 +23,8 @@
                     <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                <li class="nav-item {% if active_page == 'AboutPage' %} active {% endif %}">
-                    <a class="nav-link" href="{% url 'AboutPage' %}">About</a>
+                <li class="nav-item {% if active_page == 'Search' %} active {% endif %}">
+                    <a class="nav-link" href="{% url 'Search' %}">Search</a>
                 </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item dropdown">
