@@ -1,0 +1,50 @@
+{% extends "base/base.html" %}
+
+{% block title %}Create New User{% endblock title %}
+
+{% block content %}
+<form method="POST">
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% csrf_token %}
+        <div class="row justify-content-center mt-5">
+            <div class="card bg-dark w-25">
+                <div class="text-light ml-4 font-weight-bold">
+                    Username:   
+                </div>
+                <div class="mx-auto"> 
+                    {{form.name}}
+                </div>
+                <div class="text-light ml-4 font-weight-bold">
+                    Password:   
+                </div>
+                <div class="mx-auto"> 
+                    {{form.password}}
+                </div>
+                <div class="text-light ml-4 font-weight-bold">
+                        Email:   
+                    </div>
+                    <div class="mx-auto"> 
+                        {{form.email}}
+                    </div>
+                <button class="btn btn-dark mt-1">Create Account</button>
+            </div>
+        </div>
+    </form>
+{% endblock content %}
+
+{% block navbar %}
+    {% include "base/navbar.html" with active_page="login" %}
+{% endblock navbar %}

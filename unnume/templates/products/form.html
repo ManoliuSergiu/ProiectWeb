@@ -1,8 +1,11 @@
 {% extends "base/base.html" %} 
 {% load static %} 
-{% block title %} Add {% endblock title %} 
+{% block title %} Add Item {% endblock title %} 
+{% block navbar %}
+    {% include "base/navbar.html" with active_page="Add" %}
+{% endblock navbar %}
 {% block content %}
-<div id="message"></div>
+
 <div class="row">
         <form id="primary-form" method="POST" action="{% url 'Add' %}" enctype="multipart/form-data">
             <div class="row">

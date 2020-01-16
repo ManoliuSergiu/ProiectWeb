@@ -1,14 +1,45 @@
 {% extends "base/base.html" %}
-
+{% load static %}
+{% block title %}
+    {{object.name}}
+{% endblock title %}
 {% block content %}
+<div id="test"></div>
     <div class="row border-black mx-auto ">
         <div class="column w-25" style="align-content:center;">
             <img src="{{ object.image.url }}" alt="{{object.name}} image" style="max-width: 100%;">
         </div>
-        <div class="column w-75 font-weight-bold text-center text-uppercase" style="background-color: aqua;">
-            <div class="d-flex justify-content-center align-items-center align-middle">
-                {{object.name}}
+        <div class="column w-75 font-weight-bold text-center text-uppercase">
+            <div class="mx-auto mt-5">
+                <h3>{{object.name}}</h3>
+                <div class="justify-content-end row mt-5 ml-5">
+                    <h5 class="mr-5 my-auto">{{object.price}} Lei</h5>
+                    <button class="btn btn-primary mr-5" id="add-button">Add to Cart</button>
+                </div>
             </div>
         </div>
     </div>
+    <div class="dropdown w-100">
+        <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Details
+        </button>
+        <div class="dropdown-menu w-100">
+            <div class="row ">
+                <h5 class="mr-auto pl-5 pr-5">Description</h5>
+            </div>
+            <div class="row border-bottom">
+                <pre class="mr-auto pl-5 pr-5 text-break">{{object.description}}</pre>
+            </div>
+            {% for detail in object.details.all %}
+              <div class="row border-bottom">
+                  <p class="mr-auto pl-5">{{detail.feature.name}}</p>
+                  <p class="ml-auto pr-5">{{detail}}</p>
+              </div>
+            {% endfor %}
+        </div>   
+    </div>  
 {% endblock content %}
+{% block scripts %} 
+    {{block.super}}
+    <script src="{% static "js/addToCart.js" %}"></script>
+{% endblock scripts %}

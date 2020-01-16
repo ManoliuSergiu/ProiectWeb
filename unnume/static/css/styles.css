@@ -3,3 +3,29 @@
     max-height: 350px;
     
 }
+body{
+    background-color: #eaeced;
+}
+input{
+    border-radius: 5px;
+}
+textarea{
+    border-radius: 5px;
+    border-bottom: 0;
+    border-right: 0;
+
+    border-top: 5;
+    border-left: 5;
+}
+.navbar-brand{
+    border-radius: 10px;
+}
+.navbar-brand:hover{
+    background-color: #424549;
+}
+div.card.bg-dark.w-25{
+    background-color: #343a40;
+}
+pre{
+    white-space: pre-wrap; 
+}

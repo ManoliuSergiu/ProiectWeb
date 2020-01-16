@@ -1,23 +1,31 @@
 {% extends "base/base.html" %}
 
 {% block content %}
-    <div class="row mt-5">
-        {% for object in object_list %}
-            <a href="{% url 'Item' object.id %}">
-                <div class="column pr-2 pl-2" id="product-card" url=>
-                    <div class="card text-center" style="width: 12rem;">
-                        <div style="min-height: 200px; overflow: hidden;">
-                            <img src="{{object.image.url}}" class="card-img-top" alt="" style="width: 100%;">
+    <div class="row mt-5 justify-content-center">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+            {% for object in object_list|slice:"3" %}
+            
+                <div class="carousel-item {% if forloop.first %} active {% endif %} ">
+                    <a href="{% url 'Item' object.pk %}">
+                        <img class="d-block" src="{{object.image.url}}" width="400" height="400" alt="First slide" style="object-fit: contain;">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>{{object.name}}</h5>
+                            <p>{{object.price}} Lei</p>
                         </div>
-                        <div class="card-body border-top">
-                            <h3 class="card-title ">
-                                {{object.name}}
-                            </h3>
-                            <h6 class="card-text">{{object.price}} RON</h6>
-                        </div>
-                    </div>
+                    </a>
                 </div>
+            {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
             </a>
-        {% endfor %}
+        </div>
+
     </div>
 {% endblock content %}

@@ -2,5 +2,7 @@
 
 {% block title %}Home{% endblock title %}
 
-{% block content %} Hello, {{ user.get_username }} {% endblock %}
+{% block content %} 
+    Hello, {% if user.first_name %}  {{ user.first_name }}  {% else %}  {{ user.get_username }}  {% endif %}
+{% endblock %}
 
